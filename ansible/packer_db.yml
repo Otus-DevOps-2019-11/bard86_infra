@@ -16,6 +16,8 @@
   - name: Install mongodb
     apt:
       name: mongodb-org
+      update_cache: yes
+      allow_unauthenticated: yes
       state: present
 
   - name: Enable mongod service

@@ -155,4 +155,5 @@ change inventory source to `./inventory.json`
  - add playbooks for packer: `./ansible/packer_app.json` and `./ansible/packer_db.json`  
  - integrate ansible with packer `./packer/app.json` and `./packer/db.json`  
  - create new db & app images  
+ - up infrastructure `$ cd ./terraform/stage/ && terraform apply`
  - run `$ ansible-playbook site.yml` to depoly infrastructure and app  
