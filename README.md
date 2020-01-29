@@ -149,10 +149,17 @@ change inventory source to `./inventory.json`
  - add inventory plugin `gcp_compute` (https://docs.ansible.com/ansible/latest/plugins/inventory/gcp_compute.html)  
  - create gcp_compute plugin config `./ansible/gcp_compute.yml`
  - create service account key `~/.gsutil/key.json` (https://cloud.google.com/iam/docs/creating-managing-service-account-keys#iam-service-account-keys-create-gcloud)
- - test gcp_compute plugin `$ ansible-inventory -i gcp_compute.yml --graph`
+ - test gcp_compute plugin `$ ansible-inventory -i gcp_compute.yaml --graph`
  - modify `ansible.cfg` and playbooks to use inventory data  
 
  - add playbooks for packer: `./ansible/packer_app.json` and `./ansible/packer_db.json`  
  - integrate ansible with packer `./packer/app.json` and `./packer/db.json`  
  - create new db & app images  
  - run `$ ansible-playbook site.yml` to depoly infrastructure and app  
+
+## Ansible-3
+
+ - Move playbooks to created roles
+ - Make two envs
+ - use nginx role
+ - use Ansible Vault to store secrets
