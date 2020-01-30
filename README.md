@@ -1,5 +1,7 @@
 # bard86_infra
 bard86 Infra repository
+
+[![Build Status](https://travis-ci.com/Otus-DevOps-2019-11/bard86_infra.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2019-11/bard86_infra)
   
 ## Connect to someinternalhost through bastion host  
 `ssh -i ~/.ssh/appuser -J appuser@35.228.188.53 appuser@10.166.0.3`
@@ -159,7 +161,12 @@ change inventory source to `./inventory.json`
 
 ## Ansible-3
 
- - Move playbooks to created roles
- - Make two envs
- - use nginx role
- - use Ansible Vault to store secrets
+ - Move playbooks to roles created by ansible-galaxy (`$ ansible-galaxy -h`, `$ ansible-galaxy init <role>`)
+ - Make two envs: prod & stage
+ - Add group_vars for environments to describe the differences
+ - Add nginx role for reverse proxy deployment
+ - Add Ansible Vault to store secrets, create vault.key out of tree, encrypt credentials.yml in both envs (`$ ansible-vault encrypt environments/prod/credentials.yml`)
+ - Add validations to .travis.yml file (packer validate, terraform validate, tflint, ansible-lint)
+ - Improve Ansible config file: add diff output
+ - Open http port for reverse proxy
+ - Test build with trytravis 
