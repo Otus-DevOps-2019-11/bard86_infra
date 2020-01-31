@@ -1,0 +1,17 @@
+plugin: gcp_compute
+zones:
+  - europe-north1-a
+projects:
+  - infra-262414
+filters: []
+auth_kind: serviceaccount
+service_account_file: ~/.gsutil/key.json
+scopes:
+  - 'https://www.googleapis.com/auth/compute.readonly'
+groups:
+  app: "'app' in name"
+  db: "'db' in name"
+hostnames:
+  - name
+compose:
+  ansible_host: networkInterfaces[0].accessConfigs[0].natIP

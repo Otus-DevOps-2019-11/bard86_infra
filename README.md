@@ -1,5 +1,7 @@
 # bard86_infra
 bard86 Infra repository
+
+[![Build Status](https://travis-ci.com/Otus-DevOps-2019-11/bard86_infra.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2019-11/bard86_infra)
   
 ## Connect to someinternalhost through bastion host  
 `ssh -i ~/.ssh/appuser -J appuser@35.228.188.53 appuser@10.166.0.3`
@@ -149,10 +151,22 @@ change inventory source to `./inventory.json`
  - add inventory plugin `gcp_compute` (https://docs.ansible.com/ansible/latest/plugins/inventory/gcp_compute.html)  
  - create gcp_compute plugin config `./ansible/gcp_compute.yml`
  - create service account key `~/.gsutil/key.json` (https://cloud.google.com/iam/docs/creating-managing-service-account-keys#iam-service-account-keys-create-gcloud)
- - test gcp_compute plugin `$ ansible-inventory -i gcp_compute.yml --graph`
+ - test gcp_compute plugin `$ ansible-inventory -i gcp_compute.yaml --graph`
  - modify `ansible.cfg` and playbooks to use inventory data  
 
  - add playbooks for packer: `./ansible/packer_app.json` and `./ansible/packer_db.json`  
  - integrate ansible with packer `./packer/app.json` and `./packer/db.json`  
  - create new db & app images  
  - run `$ ansible-playbook site.yml` to depoly infrastructure and app  
+
+## Ansible-3
+
+ - Move playbooks to roles created by ansible-galaxy (`$ ansible-galaxy -h`, `$ ansible-galaxy init <role>`)
+ - Make two envs: prod & stage
+ - Add group_vars for environments to describe the differences
+ - Add nginx role for reverse proxy deployment
+ - Add Ansible Vault to store secrets, create vault.key out of tree, encrypt credentials.yml in both envs (`$ ansible-vault encrypt environments/prod/credentials.yml`)
+ - Add validations to .travis.yml file (packer validate, terraform validate, tflint, ansible-lint)
+ - Improve Ansible config file: add diff output
+ - Open http port for reverse proxy
+ - Test build with trytravis 

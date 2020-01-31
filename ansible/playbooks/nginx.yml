@@ -1,0 +1,8 @@
+---
+- name: Configure reverse proxy NGINX
+  hosts: app
+  become: true
+
+  roles:
+    - jdauphant.nginx
+...
