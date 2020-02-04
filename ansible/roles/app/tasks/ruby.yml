@@ -1,0 +1,7 @@
+---
+- name: Install ruby and rubygems and required packages
+  apt:
+    update_cache: yes
+    name: ['ruby-full', 'ruby-bundler', 'build-essential']
+  tags: ruby
+...

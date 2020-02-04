@@ -7,9 +7,11 @@ packer/variables.json
 *.retry
 ansible/roles/jdauphant.nginx/
 # Vagrant & molecule
-.vagrant/
+ansible/.vagrant/
 *.log
 *.pyc
 .molecule
 .cache
 .pytest_cache
+/ansible/venv/
+/ansible/roles/db/
