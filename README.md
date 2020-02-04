@@ -170,3 +170,12 @@ change inventory source to `./inventory.json`
  - Improve Ansible config file: add diff output
  - Open http port for reverse proxy
  - Test build with trytravis 
+
+## Ansible-4
+
+ - add build status image to README.md file
+ - add provision sections to Vagrant file
+ - replace tasks with roles in packer_db and packer_app playbooks
+ - add variable {deploy_user} for more flexibility 
+ - add "Install python for Ansible" playbook
+ - extract db role to external repo
