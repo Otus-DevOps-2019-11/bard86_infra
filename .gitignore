@@ -6,3 +6,12 @@ packer/variables.json
 .terraform/
 *.retry
 ansible/roles/jdauphant.nginx/
+# Vagrant & molecule
+ansible/.vagrant/
+*.log
+*.pyc
+.molecule
+.cache
+.pytest_cache
+/ansible/venv/
+/ansible/roles/db/
